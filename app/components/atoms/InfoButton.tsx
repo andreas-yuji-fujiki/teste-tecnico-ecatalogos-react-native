@@ -1,5 +1,5 @@
-import { GestureResponderEvent } from "react-native";
 import styled from "styled-components/native";
+import { GestureResponderEvent } from "react-native";
 
 import InfoButtonIcon from '../../../assets/images/icons/info-button-icon.svg'
 
