@@ -1,15 +1,20 @@
-import { Text, View } from "react-native";
+import styled from 'styled-components/native';
+import { useFonts } from 'expo-font';
+
+import LoadingScreen from "./components/(screens)/LoadingScreen";
 
 export default function Index() {
+  // loading fonts
+  const [ fontsLoaded ] = useFonts ({
+    'Poppins': require('../assets/fonts/Poppins-Regular.ttf')
+  })
+  if ( !fontsLoaded ) return <LoadingScreen />
+
+  // index
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+      <IndexWrapper>
+      </IndexWrapper>
+  )
 }
+
+const IndexWrapper = styled.View``
