@@ -12,7 +12,7 @@ const ProductVisibleData = ( { product } : VisibleDataProps ) => {
                 { product.name }
             </DataText>
             <DataText>
-                REF: {product.reference}
+                REF: { product.reference }
             </DataText>
             <DataText>
                 R$ { product.price }
