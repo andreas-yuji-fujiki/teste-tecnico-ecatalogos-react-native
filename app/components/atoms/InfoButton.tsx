@@ -1,11 +1,8 @@
 import styled from "styled-components/native";
-import { GestureResponderEvent } from "react-native";
 
 import InfoButtonIcon from '../../../assets/images/icons/info-button-icon.svg'
 
-interface InfoButtonProps {
-    onPress: (event?: GestureResponderEvent) => void;
-};
+import { InfoButtonProps } from "@/types/InfoButtonProps";
 
 const InfoButton = ( onPress : InfoButtonProps ) => {
     return(

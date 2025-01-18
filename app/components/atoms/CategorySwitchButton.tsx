@@ -1,15 +1,11 @@
 import styled from "styled-components/native";
-import { GestureResponderEvent } from 'react-native';
 
 import Colors from "@/app/constants/Colors";
 import CategoriesSwitchButtonIcon from '../../../assets/images/icons/categories-switch-button-icon.svg'
 
-interface SwitchButtonProps {
-    direction: 'left' | 'right';
-    onPress: (event?: GestureResponderEvent) => void;
-}
+import { CategorySwitchButtonProps } from "@/types/CategorySwitchButtonProps";
 
-const CateogrySwitchButton = ( { direction, onPress } : SwitchButtonProps ) => {
+const CateogrySwitchButton = ( { direction, onPress } : CategorySwitchButtonProps ) => {
     return (
         <SwitchButton onPress={onPress}>
             {direction === 'left' ? 

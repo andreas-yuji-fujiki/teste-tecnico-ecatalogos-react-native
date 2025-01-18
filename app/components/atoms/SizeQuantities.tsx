@@ -1,13 +1,10 @@
 // imports
 import styled from "styled-components/native";
 
-import { Product as ProductType } from '../../../types/ProductTypes';
 import { useState, useEffect } from "react";
 
 // types
-interface SizeQuantitiesProps {
-    product: ProductType;
-}
+import { SizeQuantitiesProps } from "@/types/SizeQuantitiesProps";
 
 const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
     const [display, setDisplay] = useState<'flex' | 'none'>('flex');

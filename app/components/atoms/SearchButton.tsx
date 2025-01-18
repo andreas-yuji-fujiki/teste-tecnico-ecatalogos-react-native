@@ -1,11 +1,8 @@
 import styled from "styled-components/native";
-import { GestureResponderEvent } from "react-native";
 
 import SearchButtonIcon from '../../../assets/images/icons/search-button-icon.svg'
 
-interface SearchButtonProps {
-    onPress: (event?: GestureResponderEvent) => void;
-};
+import { SearchButtonProps } from "@/types/SearchButtonProps";
 
 const SearchButton = ( onPress : SearchButtonProps ) => {
     return (

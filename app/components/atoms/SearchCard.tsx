@@ -1,19 +1,15 @@
 // imports
 import styled from "styled-components/native";
 import { useState, useEffect } from "react";
+
 import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.svg'
 import Colors from "@/app/constants/Colors";
 
 // types
-interface SearchCardProps {
-    display: "hidden" | "visible";
-    onClose: () => void;
-    searchInputValue: string;
-    error?: string;
-}
+import { SearchCardProps } from "@/types/SearchCardProps";
 
 // component
-const SearchCard = ({ display, onClose, searchInputValue, error }: SearchCardProps) => {
+const SearchCard = ({ display, searchInputValue, error, onSubmitSearch }: SearchCardProps) => {
     // visibility state
     const [displayClass, setDisplayClass] = useState<"none" | "flex">("none");
 
@@ -25,7 +21,6 @@ const SearchCard = ({ display, onClose, searchInputValue, error }: SearchCardPro
     // close button handling
     function handleClose() {
         setDisplayClass('none');
-        onClose();
     }
 
     // display styles
@@ -56,7 +51,9 @@ const SearchCard = ({ display, onClose, searchInputValue, error }: SearchCardPro
                         { error != '' ? error : ''}
                     </InputErrorMessage>
                 </SearchInputContainer>
-                <ConfirmSearchButton>
+
+                {/* send search button */}
+                <ConfirmSearchButton onPress={onSubmitSearch}>
                     Buscar
                 </ConfirmSearchButton>
             </FormContainer>

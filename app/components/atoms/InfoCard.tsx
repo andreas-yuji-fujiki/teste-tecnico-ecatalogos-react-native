@@ -4,15 +4,10 @@ import styled from "styled-components/native";
 import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.svg'
 
 // types
-import { Product as ProductType } from '../../../types/ProductTypes';
-interface InfoCardProps {
-    product: ProductType;
-    display: "hidden" | "visible";
-    onClose: () => void;
-}
+import { InfoCardProps } from "@/types/InfoCardProps";
 
 // component
-const InfoCard = ({ product, display, onClose }: InfoCardProps) => {
+const InfoCard = ({ product, display }: InfoCardProps) => {
     // visibility state
     const [displayClass, setDisplayClass] = useState<"none" | "flex">("none");
 
@@ -24,7 +19,6 @@ const InfoCard = ({ product, display, onClose }: InfoCardProps) => {
     // close button handling
     function handleClose() {
         setDisplayClass('none');
-        onClose();
     }
 
     // display styles

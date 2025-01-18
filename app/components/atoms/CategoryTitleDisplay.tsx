@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
 
-interface CategoryTitleProps {
-    quantity: string | number;
-    name: string;
-}
+import { CategoryTitleProps } from "@/types/CategoryTitleProps";
 
 const CategoryTitleDisplay = ( { quantity, name } : CategoryTitleProps ) => {
     return (

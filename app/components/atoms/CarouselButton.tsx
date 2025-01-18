@@ -1,12 +1,8 @@
-import { GestureResponderEvent } from "react-native";
 import styled from "styled-components/native";
 
 import CarouselButtonIcon from '../../../assets/images/icons/carousel-arrow-button-icon.svg'
 
-interface CarouselButtonProps {
-    direction: 'left' | 'right';
-    onPress: (event?: GestureResponderEvent) => void;
-}
+import { CarouselButtonProps } from "@/types/CarouselButtonProps";
 
 const CarouselButton = ( { direction, onPress } : CarouselButtonProps) => {
     return(

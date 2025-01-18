@@ -1,11 +1,8 @@
-import { GestureResponderEvent } from "react-native";
 import styled from "styled-components/native";
 
 import RemoveButtonIcon from '../../../assets/images/icons/minus-button-icon.svg'
 
-interface RemoveButtonProps {
-    onPress: (event?: GestureResponderEvent) => void;
-}
+import { RemoveButtonProps } from "@/types/RemoveButtonProps";
 
 const RemoveButton = ( { onPress } : RemoveButtonProps ) => {
     return (

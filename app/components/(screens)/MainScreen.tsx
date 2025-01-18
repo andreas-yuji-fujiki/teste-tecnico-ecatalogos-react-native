@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 
 const MainScreen = () => {
+    function fodase(){}
+
     return (
         <MainScreenContainer>
         </MainScreenContainer>

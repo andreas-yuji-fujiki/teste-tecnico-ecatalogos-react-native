@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
-import { Product as ProductData } from '../../../types/ProductTypes'
 
-interface VisibleDataProps {
-    product: ProductData;
-}
+import { VisibleDataProps } from "@/types/VisibleDataProps";
 
 const ProductVisibleData = ( { product } : VisibleDataProps ) => {
     return (

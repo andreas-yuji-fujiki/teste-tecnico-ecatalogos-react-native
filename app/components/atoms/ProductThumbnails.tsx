@@ -1,10 +1,6 @@
 import styled from "styled-components/native";
-import { Product as ProductType} from '../../../types/ProductTypes';
 
-interface ThumbnailsProps {
-    product: ProductType;
-    onThumbnailClick: (imagePath: string) => void;
-};
+import { ThumbnailsProps } from "@/types/ThumbnailProps";
 
 const ProductThumbnails = ( { product, onThumbnailClick } : ThumbnailsProps ) => {
     return(

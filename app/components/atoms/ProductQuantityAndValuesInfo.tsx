@@ -1,16 +1,9 @@
 import styled from "styled-components/native";
-import { GestureResponderEvent } from "react-native";
 
 import RemoveButton from "./RemoveButton";
 import AddButton from "./AddButton";
 
-interface QuantityAndPriceProps {
-    current: number;
-    acumulated: number;
-    quantity: number;
-    onAdd: (event?: GestureResponderEvent) => void;
-    onRemove: (event?: GestureResponderEvent) => void;
-}
+import { QuantityAndPriceProps } from "@/types/QuantityAndPriceProps";
 
 const ProductQuantityAndValuesInfo = ( { 
     current, 
