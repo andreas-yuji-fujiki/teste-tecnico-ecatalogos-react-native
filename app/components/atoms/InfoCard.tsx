@@ -1,17 +1,18 @@
 // imports
 import { useState, useEffect } from "react";
 import styled from "styled-components/native";
+import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.svg'
 
 // types
 import { Product as ProductType } from '../../../types/ProductTypes';
-
 interface InfoCardProps {
     product: ProductType;
     display: "hidden" | "visible";
+    onClose: () => void;
 }
 
 // component
-const InfoCard = ({ product, display }: InfoCardProps) => {
+const InfoCard = ({ product, display, onClose }: InfoCardProps) => {
     // visibility state
     const [displayClass, setDisplayClass] = useState<"none" | "flex">("none");
 
@@ -20,6 +21,12 @@ const InfoCard = ({ product, display }: InfoCardProps) => {
         setDisplayClass(display === "hidden" ? "none" : "flex");
     }, [display]);
 
+    // close button handling
+    function handleClose() {
+        setDisplayClass('none');
+        onClose();
+    }
+
     // display styles
     const containerStyle = {
         display: displayClass,
@@ -27,6 +34,9 @@ const InfoCard = ({ product, display }: InfoCardProps) => {
 
     return (
         <InfoCardContainer style={containerStyle}>
+            <CloseButton onPress={handleClose}>
+                <ButtonIcon source={CloseButtonIcon} />
+            </CloseButton>
             <Header>
                 <HeaderTitle>
                     Informações:
@@ -58,7 +68,13 @@ export default InfoCard;
 const InfoCardContainer = styled.View``;
 
 const Header = styled.View``;
+
 const HeaderTitle = styled.Text``;
 
 const InfoContainer = styled.View``;
+
 const InfoText = styled.Text``;
+
+const CloseButton = styled.TouchableOpacity``;
+
+const ButtonIcon = styled.Image``;
