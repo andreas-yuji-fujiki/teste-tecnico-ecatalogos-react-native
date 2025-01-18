@@ -29,7 +29,6 @@ const LoadingScreen = () => {
     </LoadingScreenContainer>
   );
 };
-
 export default LoadingScreen;
 
 const LoadingScreenContainer = styled.View`

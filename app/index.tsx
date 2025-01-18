@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
 import { useFonts } from 'expo-font';
 
+import MainScreen from './components/(screens)/MainScreen';
 import LoadingScreen from "./components/(screens)/LoadingScreen";
 
 export default function Index() {
@@ -12,9 +12,6 @@ export default function Index() {
 
   // index
   return (
-      <IndexWrapper>
-      </IndexWrapper>
+      <MainScreen />
   )
 }
-
-const IndexWrapper = styled.View``
