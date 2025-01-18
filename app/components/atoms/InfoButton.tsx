@@ -5,7 +5,7 @@ import InfoButtonIcon from '../../../assets/images/icons/info-button-icon.svg'
 
 interface InfoButtonProps {
     onPress: (event?: GestureResponderEvent) => void;
-}
+};
 
 const InfoButton = ( onPress : InfoButtonProps ) => {
     return(
