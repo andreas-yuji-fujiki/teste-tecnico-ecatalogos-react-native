@@ -1,14 +1,16 @@
+// imports
 import styled from "styled-components/native";
 
 import { Product as ProductType } from '../../../types/ProductTypes';
 import { useState, useEffect } from "react";
 
+// types
 interface SizeQuantitiesProps {
     product: ProductType;
 }
 
 const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
-    const [ display, setDisplay ] = useState<'flex' | 'none'>('flex')
+    const [display, setDisplay] = useState<'flex' | 'none'>('flex');
 
     // get size data
     const sizesData = product.skus.reduce((sizesData, sku) => {
@@ -39,27 +41,20 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
         (sizesData.gSizeQuantity || 0) +
         (sizesData.ggSizeQuantity || 0) +
         (sizesData.mSizeQuantity || 0) +
-        (sizesData.pSizeQuantity || 0) ;
+        (sizesData.pSizeQuantity || 0);
 
-    // making shure that pack value isn't 0
-    if(packValue === 0) setDisplay('none')
-
-    // display set
-    const VisibilityStyles = {
-        display: display
-    }
+    // ensuring pack value isn't 0
+    useEffect(() => {
+        if (packValue === 0) setDisplay('none');
+    }, [packValue]);
 
     return (
-        <Container style={VisibilityStyles}>
+        <Container display={display}>
             {sizesDataArray.map(([key, value]) => {
-                // format the key to show the size indicator (G, GG, M, P)
                 const size = key.includes('Indicator') ? value : null;
-                
-                // ensure the key is one of the valid ones for sizesData
                 const quantityKey = key.includes('Quantity') ? key : null;
                 const quantity = quantityKey ? sizesData[quantityKey as keyof typeof sizesData] : null;
 
-                // only render if size and quantity are available
                 return size && quantity ? (
                     <QuantityContainer key={size}>
                         <SizeLetter>{size}</SizeLetter>
@@ -68,12 +63,8 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
                 ) : null;
             })}
             <QuantityContainer>
-                <SizeLetter>
-                    Pack:
-                </SizeLetter>
-                <QuantitySpan>
-                    { packValue }
-                </QuantitySpan>
+                <SizeLetter>Pack:</SizeLetter>
+                <QuantitySpan>{packValue}</QuantitySpan>
             </QuantityContainer>
         </Container>
     );
@@ -81,7 +72,9 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
 
 export default SizeQuantities;
 
-const Container = styled.View``;
+const Container = styled.View<{ display: 'flex' | 'none' }>`
+    display: ${(props:any) => props.display};
+`;
 
 const QuantityContainer = styled.View``;
 const SizeLetter = styled.Text``;
