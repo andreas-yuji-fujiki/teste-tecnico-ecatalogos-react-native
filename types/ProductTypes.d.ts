@@ -21,7 +21,20 @@ type Product = {
     size: string;
     stock: number;
     open_grid: boolean;
+    
     min_quantity: number;
+
+    gSizeIndicator: string;
+    gSizeQuantity: number;
+
+    ggSizeIndicator: string;
+    ggSizeQuantity: number;
+
+    mSizeIndicator: string;
+    mSizeQuantity: number;
+
+    pSizeIndicator: string;
+    pSizeQuantity: number;
   };
   
   type Image = {
