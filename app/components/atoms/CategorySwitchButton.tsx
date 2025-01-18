@@ -26,8 +26,8 @@ const SwitchButton = styled.TouchableOpacity`
     background-color: ${( Colors.blueGray )};
 `;
 const LeftSideIcon = styled.Image`
-    transform: rotate(0deg);
+     transform: rotate(180deg);
 `;
 const RightSideIcon = styled.Image`
-    transform: rotate(180deg);
+   transform: rotate(0deg);
 `;
