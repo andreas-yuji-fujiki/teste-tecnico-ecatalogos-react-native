@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+
 import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 
