@@ -14,6 +14,7 @@ const InfoButton = ( onPress : InfoButtonProps ) => {
         </ButtonWrapper>
     );
 };
+export default InfoButton;
 
 const ButtonWrapper = styled.TouchableOpacity``;
 const ButtonIcon = styled.Image``;
