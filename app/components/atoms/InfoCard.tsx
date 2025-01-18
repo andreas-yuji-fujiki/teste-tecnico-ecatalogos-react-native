@@ -29,7 +29,7 @@ const InfoCard = ({ product, display }: InfoCardProps) => {
         <InfoCardContainer style={containerStyle}>
             <Header>
                 <HeaderTitle>
-                    Informações
+                    Informações:
                 </HeaderTitle>
             </Header>
             <InfoContainer>
