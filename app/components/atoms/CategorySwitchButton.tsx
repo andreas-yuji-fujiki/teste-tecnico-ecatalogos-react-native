@@ -10,7 +10,7 @@ interface SwitchButtonProps {
 }
 
 const CateogrySwitchButton = ( { direction, onPress } : SwitchButtonProps ) => {
-    return(
+    return (
         <SwitchButton onPress={onPress}>
             {direction === 'left' ? 
                 <LeftSideIcon source={ CategoriesSwitchButtonIcon } />

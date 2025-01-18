@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 const MainScreen = () => {
-    return(
+    return (
         <MainScreenContainer>
         </MainScreenContainer>
     );
