@@ -1,12 +1,24 @@
 import styled from "styled-components/native";
 
-const CategoryTitleDisplay = ( { children } : any ) => {
+interface CategoryTitleProps {
+    quantity: string | number;
+    name: string;
+}
+
+const CategoryTitleDisplay = ( { quantity, name } : CategoryTitleProps ) => {
     return (
         <TitleWrapper>
-            { children }
+            <QuantityWrapper>
+                { quantity }
+            </QuantityWrapper>
+            <NameWrapper>
+                { name }
+            </NameWrapper>
         </TitleWrapper>  
     );
 };
 export default CategoryTitleDisplay;
 
-const TitleWrapper = styled.Text``;
+const TitleWrapper = styled.View``;
+const QuantityWrapper = styled.Text``;
+const NameWrapper = styled.Text``;
