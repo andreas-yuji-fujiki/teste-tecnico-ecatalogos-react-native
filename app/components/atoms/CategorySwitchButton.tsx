@@ -13,13 +13,14 @@ const CateogrySwitchButton = ( { direction, onPress } : SwitchButtonProps ) => {
     return(
         <SwitchButton>
             {direction === 'left' ? 
-                <LeftSideIcon source={CategoriesSwitchButtonIcon} />
+                <LeftSideIcon source={ CategoriesSwitchButtonIcon } />
             :
-                <RightSideIcon source={CategoriesSwitchButtonIcon} />
+                <RightSideIcon source={ CategoriesSwitchButtonIcon } />
             }
         </SwitchButton>
     );
 };
+export default CateogrySwitchButton;
 
 const SwitchButton = styled.TouchableOpacity`
     background-color: ${( Colors.blueGray )};
