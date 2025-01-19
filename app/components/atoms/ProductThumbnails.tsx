@@ -1,21 +1,23 @@
 import styled from "styled-components/native";
-
 import { ThumbnailsProps } from "@/types/ThumbnailProps";
 
-const ProductThumbnails = ( { product, onThumbnailClick } : ThumbnailsProps ) => {
-    return(
+import ThumbnailButton from "./ThumbnailButton";
+
+const ProductThumbnails = ({ product, onThumbnailClick }: ThumbnailsProps) => {
+    return (
         <ThumbnailsContainer>
-            {product.images.map((image) => {
-                <ThumbnailImage 
-                    key={product.id} 
-                    source={image.path}
-                    onPress={() => onThumbnailClick(image.path)}
+            {product.images.map((image, index) => (
+                <ThumbnailButton
+                    key={image.id || index}
+                    index={index}
+                    image={image}
+                    onThumbnailClick={onThumbnailClick}
                 />
-            })}
+            ))}
         </ThumbnailsContainer>
     );
 };
+
 export default ProductThumbnails;
 
 const ThumbnailsContainer = styled.View``;
-const ThumbnailImage = styled.Image``;

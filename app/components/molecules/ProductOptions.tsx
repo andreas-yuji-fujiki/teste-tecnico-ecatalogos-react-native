@@ -13,13 +13,17 @@ interface ProductOptionsProps {
     searchInputValue: string;
     onSubmitSearch: (event?: GestureResponderEvent) => void;
     onThumbnailClick: (imagePath: string) => void;
+    onSearchInputChange: Function;
+    searchInputError: string;
 }
 
 const ProductOptions = ( { 
     product, 
-    searchInputValue, 
+    searchInputValue,
+    onSearchInputChange, 
     onSubmitSearch,
-    onThumbnailClick
+    onThumbnailClick,
+    searchInputError,
 } : ProductOptionsProps) => {
     return (
         <ProductOptionsContainer>
@@ -27,7 +31,9 @@ const ProductOptions = ( {
 
             <SearchSet 
                 searchInputValue={searchInputValue} 
-                onSubmitSearch={onSubmitSearch} 
+                onSearchInputChange={onSearchInputChange}
+                onSubmitSearch={onSubmitSearch}
+                error={searchInputError}
             />
 
             <ProductThumbnails 

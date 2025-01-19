@@ -3,4 +3,5 @@ export interface SearchSetProps {
     searchInputValue: string;
     error?: string;
     onSubmitSearch: (event?: GestureResponderEvent) => void;
+    onSearchInputChange: Function;
 }

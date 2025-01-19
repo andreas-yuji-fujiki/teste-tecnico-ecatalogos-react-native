@@ -9,7 +9,14 @@ import Colors from "@/app/constants/Colors";
 import { SearchCardProps } from "@/types/SearchCardProps";
 
 // component
-const SearchCard = ({ display, searchInputValue, error, onSubmitSearch, onClose }: SearchCardProps) => {
+const SearchCard = ({ 
+    display, 
+    searchInputValue, 
+    onSearchInputChange, 
+    error, 
+    onSubmitSearch,
+    onClose
+}: SearchCardProps) => {
     // visibility state
     const [displayClass, setDisplayClass] = useState<"none" | "flex">("none");
 
@@ -37,9 +44,10 @@ const SearchCard = ({ display, searchInputValue, error, onSubmitSearch, onClose 
                 <SearchInputContainer>
                     <SearchInput
                         keyboardType='numeric'
-                        maxLength={8}
+                        maxLength={10}
                         placeholder="00.00.0000"
                         value={searchInputValue}
+                        onChangeText={onSearchInputChange}
                     />
                     <InputErrorMessage>
                         { error != '' ? error : ''}
@@ -48,7 +56,9 @@ const SearchCard = ({ display, searchInputValue, error, onSubmitSearch, onClose 
 
                 {/* send search button */}
                 <ConfirmSearchButton onPress={onSubmitSearch}>
-                    Buscar
+                    <ConfirmSearchButtonText>
+                        Buscar
+                    </ConfirmSearchButtonText>
                 </ConfirmSearchButton>
             </FormContainer>
         </SearchCardContainer>
@@ -66,6 +76,8 @@ const HeaderTitle = styled.Text``;
 const SearchInputContainer = styled.View``;
 const SearchInput = styled.TextInput``;
 const ConfirmSearchButton = styled.TouchableOpacity``;
+const ConfirmSearchButtonText = styled.Text``;
+
 const InputErrorMessage = styled.Text`
     color: ${( Colors.redError )};
 `;

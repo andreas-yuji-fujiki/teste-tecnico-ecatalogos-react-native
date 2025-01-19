@@ -13,5 +13,5 @@ const RemoveButton = ( { onPress } : RemoveButtonProps ) => {
 };
 export default RemoveButton;
 
-const ButtonWrapper = styled.View``;
+const ButtonWrapper = styled.TouchableOpacity``;
 const ButtonIcon = styled.Image``;

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { SearchSetProps } from "@/types/SearchSetProps";
 
-const SearchSet = ( { searchInputValue, error, onSubmitSearch } : SearchSetProps) => {
+const SearchSet = ( { searchInputValue, onSearchInputChange, error, onSubmitSearch } : SearchSetProps) => {
     // visibility state
     const [ visibility, setVisibility ] = useState<'hidden' | 'visible'>('hidden')
     
@@ -24,7 +24,8 @@ const SearchSet = ( { searchInputValue, error, onSubmitSearch } : SearchSetProps
             <SearchButton onPress={handleVisibility}/>
             <SearchCard 
                 display={visibility} 
-                searchInputValue={searchInputValue} 
+                searchInputValue={searchInputValue}
+                onSearchInputChange={onSearchInputChange} 
                 error={error} 
                 onSubmitSearch={onSubmitSearch} 
                 onClose={handleVisibility}

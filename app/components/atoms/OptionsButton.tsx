@@ -5,7 +5,9 @@ import Colors from '@/app/constants/Colors';
 export default function OptionsButton() {
   return (
     <OptionsButtonButtonWrapper>
-        F
+        <ButtonIcon>
+          F
+        </ButtonIcon>
     </OptionsButtonButtonWrapper>
   );
 };
@@ -13,3 +15,4 @@ export default function OptionsButton() {
 const OptionsButtonButtonWrapper = styled.TouchableOpacity`
     background-color: ${( Colors.blueGray )};
 `;
+const ButtonIcon = styled.Text``;

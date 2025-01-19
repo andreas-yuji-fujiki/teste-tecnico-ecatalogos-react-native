@@ -1,6 +1,4 @@
-// imports
 import styled from "styled-components/native";
-
 import { useState, useEffect } from "react";
 
 // types
@@ -31,7 +29,12 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
     }, {} as { [key: string]: any });
 
     // transform size data into an array
-    const sizesDataArray = Object.entries(sizesData);
+    const sizesDataArray = [
+        { size: sizesData.gSizeIndicator, quantity: sizesData.gSizeQuantity },
+        { size: sizesData.ggSizeIndicator, quantity: sizesData.ggSizeQuantity },
+        { size: sizesData.mSizeIndicator, quantity: sizesData.mSizeQuantity },
+        { size: sizesData.pSizeIndicator, quantity: sizesData.pSizeQuantity },
+    ];
 
     // pack value
     const packValue =
@@ -42,17 +45,17 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
 
     // ensuring pack value isn't 0
     useEffect(() => {
-        if (packValue === 0) setDisplay('none');
+        if (packValue === 0){
+            setDisplay('none');
+        } else {
+            setDisplay('flex')
+        }
     }, [packValue]);
 
     return (
         <Container display={display}>
-            {sizesDataArray.map(([key, value]) => {
-                const size = key.includes('Indicator') ? value : null;
-                const quantityKey = key.includes('Quantity') ? key : null;
-                const quantity = quantityKey ? sizesData[quantityKey as keyof typeof sizesData] : null;
-
-                return size && quantity ? (
+            {sizesDataArray.map(({ size, quantity }) => {
+                return size && quantity !== undefined ? (
                     <QuantityContainer key={size}>
                         <SizeLetter>{size}</SizeLetter>
                         <QuantitySpan>{quantity}</QuantitySpan>
@@ -66,13 +69,18 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
         </Container>
     );
 };
-
 export default SizeQuantities;
 
 const Container = styled.View<{ display: 'flex' | 'none' }>`
-    display: ${(props:any) => props.display};
+    display: ${(props: any) => props.display};
 `;
 
-const QuantityContainer = styled.View``;
-const SizeLetter = styled.Text``;
+const QuantityContainer = styled.View`
+    flex-direction: row;
+`;
+
+const SizeLetter = styled.Text`
+    font-weight: bold;
+`;
+
 const QuantitySpan = styled.Text``;

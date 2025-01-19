@@ -13,5 +13,5 @@ const AddButton = ( { onPress } : AddButtonProps ) => {
 };
 export default AddButton;
 
-const ButtonWrapper = styled.View``;
+const ButtonWrapper = styled.TouchableOpacity``;
 const ButtonIcon = styled.Image``;

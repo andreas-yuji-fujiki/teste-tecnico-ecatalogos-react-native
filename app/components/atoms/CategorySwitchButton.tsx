@@ -19,7 +19,7 @@ const CateogrySwitchButton = ( { direction, onPress } : CategorySwitchButtonProp
 export default CateogrySwitchButton;
 
 const SwitchButton = styled.TouchableOpacity`
-    background-color: ${( Colors.blueGray )};
+    background-color: ${Colors.blueGray};
 `;
 const LeftSideIcon = styled.Image`
      transform: rotate(180deg);

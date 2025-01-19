@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import ProductSlider from "../organisms/ProductsSlider";
+import ProductSlider from "../templates/ProductsSlider";
 
 const MainScreen = () => {
     return (

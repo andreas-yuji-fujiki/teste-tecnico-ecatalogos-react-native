@@ -26,6 +26,4 @@ const CategoriesCarousel = ( {
 };
 export default CategoriesCarousel;
 
-const CategoriesCarouselWrapper = styled.View`
-
-`
+const CategoriesCarouselWrapper = styled.View``;
