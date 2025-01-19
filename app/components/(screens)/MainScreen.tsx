@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
+import ProductSlider from "../organisms/ProductsSlider";
 
 const MainScreen = () => {
-    function fodase(){}
-
     return (
         <MainScreenContainer>
+            <ProductSlider />
         </MainScreenContainer>
     );
 };
