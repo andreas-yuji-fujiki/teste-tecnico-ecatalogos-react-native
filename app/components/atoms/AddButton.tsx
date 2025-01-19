@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-import AddButtonIcon from '../../../assets/images/icons/plus-button-icon.svg'
+import AddButtonIcon from '../../../assets/images/icons/plus-button-icon.png'
 
 import { AddButtonProps } from "@/types/AddButtonProps";
 

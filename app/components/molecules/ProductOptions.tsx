@@ -41,4 +41,4 @@ const ProductOptions = ( {
 };
 export default ProductOptions;
 
-const ProductOptionsContainer = styled.View``
+const ProductOptionsContainer = styled.View``;

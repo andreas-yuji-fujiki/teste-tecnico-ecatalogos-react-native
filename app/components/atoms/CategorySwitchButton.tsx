@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 import Colors from "@/app/constants/Colors";
-import CategoriesSwitchButtonIcon from '../../../assets/images/icons/categories-switch-button-icon.svg'
+import CategoriesSwitchButtonIcon from '../../../assets/images/icons/categories-switch-button-icon.png'
 
 import { CategorySwitchButtonProps } from "@/types/CategorySwitchButtonProps";
 

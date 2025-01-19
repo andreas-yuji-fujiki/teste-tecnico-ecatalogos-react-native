@@ -22,7 +22,7 @@ const InfoSet = ( { product } : InfoSetProps ) => {
     return(
         <InfoSetContainer>
             <InfoButton onPress={toggleInfoVisibility}/>
-            <InfoCard product={product} display={visibility}/>
+            <InfoCard product={product} display={visibility} onClose={toggleInfoVisibility} />
         </InfoSetContainer>
     );
 };

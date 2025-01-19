@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-import CartButtonIcon from '../../../assets/images/icons/cart-button-icon.svg'
+import CartButtonIcon from '../../../assets/images/icons/cart-button-icon.png'
 
 const CartButton = () => {
     return (

@@ -24,17 +24,17 @@ type Product = {
     
     min_quantity: number;
 
-    gSizeIndicator: string;
-    gSizeQuantity: number;
+    gSizeIndicator?: string;
+    gSizeQuantity?: number;
 
-    ggSizeIndicator: string;
-    ggSizeQuantity: number;
+    ggSizeIndicator?: string;
+    ggSizeQuantity?: number;
 
-    mSizeIndicator: string;
-    mSizeQuantity: number;
+    mSizeIndicator?: string;
+    mSizeQuantity?: number;
 
-    pSizeIndicator: string;
-    pSizeQuantity: number;
+    pSizeIndicator?: string;
+    pSizeQuantity?: number;
   };
   
   type Image = {

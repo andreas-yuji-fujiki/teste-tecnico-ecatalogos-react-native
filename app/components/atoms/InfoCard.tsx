@@ -1,13 +1,13 @@
 // imports
 import { useState, useEffect } from "react";
 import styled from "styled-components/native";
-import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.svg'
+import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.png'
 
 // types
 import { InfoCardProps } from "@/types/InfoCardProps";
 
 // component
-const InfoCard = ({ product, display }: InfoCardProps) => {
+const InfoCard = ({ product, display, onClose }: InfoCardProps) => {
     // visibility state
     const [displayClass, setDisplayClass] = useState<"none" | "flex">("none");
 
@@ -16,11 +16,6 @@ const InfoCard = ({ product, display }: InfoCardProps) => {
         setDisplayClass(display === "hidden" ? "none" : "flex");
     }, [display]);
 
-    // close button handling
-    function handleClose() {
-        setDisplayClass('none');
-    }
-
     // display styles
     const containerStyle = {
         display: displayClass,
@@ -28,7 +23,7 @@ const InfoCard = ({ product, display }: InfoCardProps) => {
 
     return (
         <InfoCardContainer style={containerStyle}>
-            <CloseButton onPress={handleClose}>
+            <CloseButton onPress={onClose}>
                 <ButtonIcon source={CloseButtonIcon} />
             </CloseButton>
             <Header>

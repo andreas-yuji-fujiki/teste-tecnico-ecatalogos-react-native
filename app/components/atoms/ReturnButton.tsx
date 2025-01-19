@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { Image } from 'react-native';
 
 import Colors from '@/app/constants/Colors';
-import ReturnButtonIcon from '../../../assets/images/icons/return-button-icon.svg';
+import ReturnButtonIcon from '../../../assets/images/icons/return-button-icon.png';
 
 export default function ReturnButton() {
   return (

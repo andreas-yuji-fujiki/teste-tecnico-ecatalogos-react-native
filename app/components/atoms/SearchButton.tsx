@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
 
-import SearchButtonIcon from '../../../assets/images/icons/search-button-icon.svg'
+import SearchButtonIcon from '../../../assets/images/icons/search-button-icon.png'
 
 import { SearchButtonProps } from "@/types/SearchButtonProps";
 
-const SearchButton = ( onPress : SearchButtonProps ) => {
+const SearchButton = ( { onPress } : SearchButtonProps ) => {
     return (
         <ButtonWrapper onPress={onPress}>
             <ButtonIcon source={SearchButtonIcon} />

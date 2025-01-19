@@ -2,14 +2,14 @@
 import styled from "styled-components/native";
 import { useState, useEffect } from "react";
 
-import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.svg'
+import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.png'
 import Colors from "@/app/constants/Colors";
 
 // types
 import { SearchCardProps } from "@/types/SearchCardProps";
 
 // component
-const SearchCard = ({ display, searchInputValue, error, onSubmitSearch }: SearchCardProps) => {
+const SearchCard = ({ display, searchInputValue, error, onSubmitSearch, onClose }: SearchCardProps) => {
     // visibility state
     const [displayClass, setDisplayClass] = useState<"none" | "flex">("none");
 
@@ -18,11 +18,6 @@ const SearchCard = ({ display, searchInputValue, error, onSubmitSearch }: Search
         setDisplayClass(display === "hidden" ? "none" : "flex");
     }, [display]);
 
-    // close button handling
-    function handleClose() {
-        setDisplayClass('none');
-    }
-
     // display styles
     const containerStyle = {
         display: displayClass,
@@ -30,7 +25,7 @@ const SearchCard = ({ display, searchInputValue, error, onSubmitSearch }: Search
 
     return (
         <SearchCardContainer style={containerStyle}>
-            <CloseButton onPress={handleClose}>
+            <CloseButton onPress={onClose}>
                 <ButtonIcon source={CloseButtonIcon} />
             </CloseButton>
             <Header>
@@ -41,7 +36,6 @@ const SearchCard = ({ display, searchInputValue, error, onSubmitSearch }: Search
             <FormContainer>
                 <SearchInputContainer>
                     <SearchInput
-                        autoFocus={true}
                         keyboardType='numeric'
                         maxLength={8}
                         placeholder="00.00.0000"

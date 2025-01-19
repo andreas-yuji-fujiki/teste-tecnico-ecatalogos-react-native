@@ -27,6 +27,7 @@ const SearchSet = ( { searchInputValue, error, onSubmitSearch } : SearchSetProps
                 searchInputValue={searchInputValue} 
                 error={error} 
                 onSubmitSearch={onSubmitSearch} 
+                onClose={handleVisibility}
             />
         </SearchSetContainer>
     );

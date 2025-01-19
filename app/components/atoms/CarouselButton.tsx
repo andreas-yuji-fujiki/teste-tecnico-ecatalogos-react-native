@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-import CarouselButtonIcon from '../../../assets/images/icons/carousel-arrow-button-icon.svg'
+import CarouselButtonIcon from '../../../assets/images/icons/carousel-arrow-button-icon.png'
 
 import { CarouselButtonProps } from "@/types/CarouselButtonProps";
 
