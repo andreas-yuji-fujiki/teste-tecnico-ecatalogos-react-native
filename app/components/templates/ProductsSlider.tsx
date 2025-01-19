@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 
 import useCart from "@/app/hooks/useCart";
 
+import AppHeader from "../molecules/AppHeader";
 import CarouselButton from "../atoms/CarouselButton";
 import ProductOptions from "../molecules/ProductOptions";
 import ProductVisibleData from "../atoms/ProductVisibleData";
@@ -59,28 +60,114 @@ const ProductSlider = () => {
         (sizesData.mSizeQuantity || 0) +
         (sizesData.pSizeQuantity || 0);
 
-    // slide directions handler
-    function handleNextSlider() {
-        const ProductDataLength = Products.length;
-        if (currentProductIndex < ProductDataLength - 1) {
-            const newIndex = currentProductIndex + 1;
-            setCurrentProductIndex(newIndex);
-            setCurrentImagePath(Products[newIndex]?.images[0]?.path || "");
+    // category carousel
+    const categories = Array.from(
+        new Set(Products.map(product => product.category))
+    );
+
+    // 2. Filtrar os produtos pela categoria selecionada
+    const filterProductsByCategory = (selectedCategory: string) => {
+        return Products.filter(product => product.category === selectedCategory);
+    };
+
+    // Calculando o número de produtos por categoria
+    const getCategoryProductCount = (selectedCategory: string) => {
+        const filteredProducts = filterProductsByCategory(selectedCategory);
+        return filteredProducts.length;
+    };
+
+    function handleNextCategory() {
+        const currentCategory = Products[currentProductIndex]?.category;
+        const currentCategoryIndex = categories.indexOf(currentCategory);
+        
+        // Verifica se está na última categoria
+        const nextCategoryIndex = (currentCategoryIndex + 1) % categories.length;
+        const nextCategory = categories[nextCategoryIndex];
+        
+        if (nextCategoryIndex === 0) {
+            // Se for a primeira categoria (voltando para o início), vai para o primeiro item da primeira categoria
+            const filteredProducts = filterProductsByCategory(nextCategory);
+            const firstProductInNextCategory = filteredProducts[0];
+            const nextProductIndex = Products.indexOf(firstProductInNextCategory);
             
-            // going to next item
-            flatListRef.current?.scrollToIndex({ index: newIndex, animated: true });
+            setCurrentProductIndex(nextProductIndex);
+            setCurrentImagePath(Products[nextProductIndex]?.images[0]?.path || "");
+            flatListRef.current?.scrollToIndex({ index: nextProductIndex, animated: true });
+        } else {
+            const filteredProducts = filterProductsByCategory(nextCategory);
+            const firstProductInNextCategory = filteredProducts[0];
+            const nextProductIndex = Products.indexOf(firstProductInNextCategory);
+            
+            // Rolando para o primeiro item da próxima categoria
+            setCurrentProductIndex(nextProductIndex);
+            setCurrentImagePath(Products[nextProductIndex]?.images[0]?.path || "");
+            flatListRef.current?.scrollToIndex({ index: nextProductIndex, animated: true });
+        }
+    }
+    
+    function handlePrevCategory() {
+        const currentCategory = Products[currentProductIndex]?.category;
+        const currentCategoryIndex = categories.indexOf(currentCategory);
+        
+        // Verifica se está na primeira categoria e no primeiro item
+        if (currentCategoryIndex === 0 && currentProductIndex === 0) {
+            const lastCategory = categories[categories.length - 1];
+            const filteredProducts = filterProductsByCategory(lastCategory);
+            const lastProductInLastCategory = filteredProducts[filteredProducts.length - 1];
+            const lastProductIndex = Products.indexOf(lastProductInLastCategory);
+            
+            // Rolando para o último item da última categoria
+            setCurrentProductIndex(lastProductIndex);
+            setCurrentImagePath(Products[lastProductIndex]?.images[0]?.path || "");
+            flatListRef.current?.scrollToIndex({ index: lastProductIndex, animated: true });
+        } else {
+            const prevCategoryIndex = (currentCategoryIndex - 1 + categories.length) % categories.length;
+            const prevCategory = categories[prevCategoryIndex];
+            
+            const filteredProducts = filterProductsByCategory(prevCategory);
+            const firstProductInPrevCategory = filteredProducts[0];
+            const prevProductIndex = Products.indexOf(firstProductInPrevCategory);
+            
+            // Rolando para o primeiro item da categoria anterior
+            setCurrentProductIndex(prevProductIndex);
+            setCurrentImagePath(Products[prevProductIndex]?.images[0]?.path || "");
+            flatListRef.current?.scrollToIndex({ index: prevProductIndex, animated: true });
         }
     }
 
-    function handlePrevSlider() {
-        if (currentProductIndex > 0) {
-            const newIndex = currentProductIndex - 1;
-            setCurrentProductIndex(newIndex);
-            setCurrentImagePath(Products[newIndex]?.images[0]?.path || "");
-
-            // scrolling the FlatList to the previous item
-            flatListRef.current?.scrollToIndex({ index: newIndex, animated: true });
+    // slide directions handler
+    function handleNextSlider() {
+        const ProductDataLength = Products.length;
+        let newIndex;
+    
+        if (currentProductIndex === ProductDataLength - 1) {
+            newIndex = 0; // Se estiver no último item, volta para o primeiro
+        } else {
+            newIndex = currentProductIndex + 1;
         }
+    
+        setCurrentProductIndex(newIndex);
+        setCurrentImagePath(Products[newIndex]?.images[0]?.path || "");
+    
+        // going to next item
+        flatListRef.current?.scrollToIndex({ index: newIndex, animated: true });
+    }
+    
+    function handlePrevSlider() {
+        const ProductDataLength = Products.length;
+        let newIndex;
+    
+        if (currentProductIndex === 0) {
+            newIndex = ProductDataLength - 1; // Se estiver no primeiro item, vai para o último
+        } else {
+            newIndex = currentProductIndex - 1;
+        }
+    
+        setCurrentProductIndex(newIndex);
+        setCurrentImagePath(Products[newIndex]?.images[0]?.path || "");
+    
+        // scrolling the FlatList to the selected item
+        flatListRef.current?.scrollToIndex({ index: newIndex, animated: true });
     }
 
     // onViewableItemsChanged handler to track which item is in view
@@ -147,17 +234,6 @@ const ProductSlider = () => {
         }
     }
 
-    // search card visibility
-    const [ visibility, setVisibility ] = useState<'hidden' | 'visible'>('hidden')
-    
-    function handleSearchCardClose(){
-        if(visibility === 'hidden'){
-            setVisibility('visible')
-        } else {
-            setVisibility('hidden')
-        }
-    }
-
     // handle the search and scroll to the item
     const [searchInputValue, setSearchInputValue] = useState<string>('');
     const [searchInputerror, setSearchInputError] = useState<string>('')
@@ -182,9 +258,17 @@ const ProductSlider = () => {
         }
     };
 
+    const categoryProductCount = getCategoryProductCount(CurrentProduct.category);
+
     return (
         <ProductCarouselContainer>
             {/* carousel */}
+            <AppHeader
+                categoryItemsQuantity={categoryProductCount}
+                categoryName={CurrentProduct.category}
+                onPrevCategory={handlePrevCategory}
+                onNextCategory={handleNextCategory}
+            />
             <CarouselContainer>
                 <FlatList
                     ref={flatListRef} // assigning the reference
@@ -260,7 +344,7 @@ const CarouselContainer = styled.View``;
 const CarouselControlsContainer = styled.View``;
 const CarouselImage = styled.Image`
     width: ${ () => fullScreenWidth }px; /* full screen width */
-    height: ${ () => fullScreenHeight * 0.20 }px; /* 20% of the screen */
+    height: ${ () => fullScreenHeight * 0.52 }px;
 `;
 
 const CurrentProductInfoContainer = styled.View``;
