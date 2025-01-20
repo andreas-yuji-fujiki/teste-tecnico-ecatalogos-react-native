@@ -270,24 +270,33 @@ const ProductSlider = () => {
                 onNextCategory={handleNextCategory}
             />
             <CarouselContainer>
-                <FlatList
-                    ref={flatListRef} // assigning the reference
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    pagingEnabled
-                    data={Products}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item, index }) => (
-                        <CarouselImage 
-                            key={item.id} 
-                            source={{ uri: index === currentProductIndex ? currentImagePath : item.images[0]?.path }}
-                            resizeMode="contain" 
-                        />
-                    )}
-                    // track which items are visible
-                    onViewableItemsChanged={onViewableItemsChanged}
-                    viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
-                />
+            <FlatList
+    ref={flatListRef} // Assigning the reference
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    pagingEnabled
+    data={Products}
+    keyExtractor={(item) => item.id.toString()}
+    renderItem={({ item, index }) => (
+        <CarouselImage 
+            key={item.id} 
+            source={{ uri: index === currentProductIndex ? currentImagePath : item.images[0]?.path }}
+            resizeMode="contain" 
+        />
+    )}
+    // track which items are visible
+    onViewableItemsChanged={onViewableItemsChanged}
+    viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
+    getItemLayout={(data, index) => ({
+        length: fullScreenWidth, // Largura do item
+        offset: fullScreenWidth * index, // Posição do item
+        index,
+    })}
+    onScrollToIndexFailed={(info) => {
+        console.warn("Falha ao rolar para o índice:", info.index);
+        flatListRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: true });
+    }}
+/>
                 <CarouselControlsContainer>
                     <CarouselButton
                         direction='left'
@@ -341,10 +350,19 @@ const fullScreenHeight = Dimensions.get('window').height;
 
 const ProductCarouselContainer = styled.View``;
 const CarouselContainer = styled.View``;
-const CarouselControlsContainer = styled.View``;
+const CarouselControlsContainer = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: absolute;
+    bottom: 55px;
+    width: ${ () => fullScreenWidth};
+`;
 const CarouselImage = styled.Image`
     width: ${ () => fullScreenWidth }px; /* full screen width */
-    height: ${ () => fullScreenHeight * 0.52 }px;
+    height: ${ () => fullScreenHeight * 0.62 }px;
 `;
 
-const CurrentProductInfoContainer = styled.View``;
+const CurrentProductInfoContainer = styled.View`
+    height: ${ () => fullScreenHeight / 3.25}px;
+`;

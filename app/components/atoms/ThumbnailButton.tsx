@@ -2,6 +2,8 @@ import styled from "styled-components/native";
 
 import { ThumbnailButtonProps } from "@/types/ThumbnailButtonProps";
 
+import Colors from "@/app/constants/Colors";
+
 const ThumbnailButton = ({ image, onThumbnailClick, index }: ThumbnailButtonProps) => {
     return (
         <ThumbnailButtonWrapper onPress={() => onThumbnailClick(image.path)}>
@@ -18,7 +20,7 @@ export default ThumbnailButton;
 
 const ThumbnailButtonWrapper = styled.TouchableOpacity``;
 const ThumbnailImage = styled.Image`
-    height: 55px;
+    height: 50px;
     width: 55px;
-    margin: 5px;
+    background-color: ${()=> Colors.white};
 `;

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import CloseButtonIcon from '../../../assets/images/icons/close-button-icon.png'
 
+import Colors from "@/app/constants/Colors";
+
 // types
 import { InfoCardProps } from "@/types/InfoCardProps";
 
@@ -33,19 +35,19 @@ const InfoCard = ({ product, display, onClose }: InfoCardProps) => {
             </Header>
             <InfoContainer>
                 <InfoText>
-                    Nome do produto: {product.name}
+                    <InfoTitle>Nome do produto:</InfoTitle> {product.name}
                 </InfoText>
                 <InfoText>
-                    Referência: {product.reference}
+                    <InfoTitle>Referência:</InfoTitle> {product.reference}
                 </InfoText>
                 <InfoText>
-                    Marca: {product.brand}
+                    <InfoTitle>Marca:</InfoTitle> {product.brand}
                 </InfoText>
                 <InfoText>
-                    Categoria: {product.category}
+                    <InfoTitle>Categoria:</InfoTitle> {product.category}
                 </InfoText>
                 <InfoText>
-                    Gênero: {product.gender}
+                    <InfoTitle>Gênero:</InfoTitle> {product.gender}
                 </InfoText>
             </InfoContainer>
         </InfoCardContainer>
@@ -54,16 +56,47 @@ const InfoCard = ({ product, display, onClose }: InfoCardProps) => {
 export default InfoCard;
 
 // styled components
-const InfoCardContainer = styled.View``;
+const InfoCardContainer = styled.View`
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 200px;
+    height: 165px;
+    gap: 15px;
 
-const Header = styled.View``;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+`;
 
-const HeaderTitle = styled.Text``;
+const Header = styled.View`
+    padding: 5px 0;
+    justify-content: center;
+    align-items: center;
+    background-color: ${()=> Colors.blueGray};
+`;
 
-const InfoContainer = styled.View``;
+const HeaderTitle = styled.Text`
+    color: #fff;
+    font-weight: bold;
+`;
 
+const InfoContainer = styled.View`
+    margin: 0 auto;
+    width: 180px;
+`;
+
+const InfoTitle = styled.Text`
+    font-weight: bold;
+`;
 const InfoText = styled.Text``;
 
-const CloseButton = styled.TouchableOpacity``;
+const CloseButton = styled.TouchableOpacity`
+    position: absolute;
+    right: 0;
+    z-index: 300;
+`;
 
 const ButtonIcon = styled.Image``;

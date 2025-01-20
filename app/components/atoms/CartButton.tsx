@@ -11,5 +11,11 @@ const CartButton = () => {
 };
 export default CartButton;
 
-const ButtonWrapper = styled.TouchableOpacity``;
-const ButtonIcon = styled.Image``;
+const ButtonWrapper = styled.TouchableOpacity`
+    width: 40px;
+    height: 40px;
+`;
+const ButtonIcon = styled.Image`
+    width: 40px;
+    height: 40px;
+`;

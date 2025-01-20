@@ -7,6 +7,8 @@ import SearchSet from "../atoms/SearchSet";
 import ProductThumbnails from "../atoms/ProductThumbnails";
 import CartButton from "../atoms/CartButton";
 
+import Colors from "@/app/constants/Colors";
+
 import { Product as ProductType } from '../../../types/ProductTypes';
 interface ProductOptionsProps {
     product: ProductType;
@@ -47,4 +49,14 @@ const ProductOptions = ( {
 };
 export default ProductOptions;
 
-const ProductOptionsContainer = styled.View``;
+const ProductOptionsContainer = styled.View`
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 6px 0;
+
+    border-top-width: 3px;
+    border-top-color: ${Colors.blueGray};
+    border-top-style: solid;
+`;

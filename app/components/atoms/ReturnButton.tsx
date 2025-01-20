@@ -7,11 +7,17 @@ import ReturnButtonIcon from '../../../assets/images/icons/return-button-icon.pn
 export default function ReturnButton() {
   return (
     <ReturnButtonWrapper>
-        <Image source={ReturnButtonIcon} />
+        <ButtonIcon source={ReturnButtonIcon} />
     </ReturnButtonWrapper>
   );
 };
 
 const ReturnButtonWrapper = styled.TouchableOpacity`
-    background-color: ${( Colors.blueGray )};
+    width: 20px;
+    height: 20px;
+    background-color: ${() => Colors.blueGray};
+`;
+const ButtonIcon = styled.Image`
+  width: 20px;
+  height: 20px;
 `;

@@ -19,11 +19,17 @@ const CateogrySwitchButton = ( { direction, onPress } : CategorySwitchButtonProp
 export default CateogrySwitchButton;
 
 const SwitchButton = styled.TouchableOpacity`
+    width: 24px;
+    height: 24px;
     background-color: ${Colors.blueGray};
 `;
 const LeftSideIcon = styled.Image`
      transform: rotate(180deg);
+     width: 24px;
+     height: 24px;
 `;
 const RightSideIcon = styled.Image`
    transform: rotate(0deg);
+   width: 24px;
+   height: 24px;
 `;

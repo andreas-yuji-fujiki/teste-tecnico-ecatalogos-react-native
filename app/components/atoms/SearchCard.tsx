@@ -37,7 +37,7 @@ const SearchCard = ({
             </CloseButton>
             <Header>
                 <HeaderTitle>
-                    Informações:
+                    Buscar por REF
                 </HeaderTitle>
             </Header>
             <FormContainer>
@@ -67,20 +67,63 @@ const SearchCard = ({
 export default SearchCard;
 
 // styled components
-const SearchCardContainer = styled.View``;
-const FormContainer = styled.View``;
+const SearchCardContainer = styled.View`
+    gap: 10px;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+    width: 200px;
+    height: 165px;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+`;
+const FormContainer = styled.View`
+    gap: 5px;
+`;
 
-const Header = styled.View``;
-const HeaderTitle = styled.Text``;
+const Header = styled.View`
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+    background-color: ${()=>Colors.blueGray};
+`;
+const HeaderTitle = styled.Text`
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+`;
 
-const SearchInputContainer = styled.View``;
+const SearchInputContainer = styled.View`
+    background-color: red;
+    width: 180px;
+    margin: 0 auto;
+    background-color: #eaeaea;
+`;
 const SearchInput = styled.TextInput``;
-const ConfirmSearchButton = styled.TouchableOpacity``;
-const ConfirmSearchButtonText = styled.Text``;
+const ConfirmSearchButton = styled.TouchableOpacity`
+    justify-content: center;
+    align-items: center;
+    background-color: ${()=> Colors.blueGray};
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 180px;
+    padding: 10px 0;
+`;
+const ConfirmSearchButtonText = styled.Text`
+    color: #fff;
+    font-weight: bold;
+`;
 
 const InputErrorMessage = styled.Text`
     color: ${( Colors.redError )};
 `;
 
-const CloseButton = styled.TouchableOpacity``;
+const CloseButton = styled.TouchableOpacity`
+    position: absolute;
+    right: 0;
+    z-index: 200;
+`;
 const ButtonIcon = styled.Image``;

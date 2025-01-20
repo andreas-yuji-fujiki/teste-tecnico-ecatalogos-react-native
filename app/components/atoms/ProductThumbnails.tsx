@@ -20,4 +20,7 @@ const ProductThumbnails = ({ product, onThumbnailClick }: ThumbnailsProps) => {
 
 export default ProductThumbnails;
 
-const ThumbnailsContainer = styled.View``;
+const ThumbnailsContainer = styled.View`
+    flex-direction: row;
+    gap: 7px;
+`;

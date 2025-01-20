@@ -1,5 +1,8 @@
+import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 import { useState, useEffect } from "react";
+
+import Colors from "@/app/constants/Colors";
 
 // types
 import { SizeQuantitiesProps } from "@/types/SizeQuantitiesProps";
@@ -63,7 +66,7 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
                 ) : null;
             })}
             <QuantityContainer>
-                <SizeLetter>Pack:</SizeLetter>
+                <PackSpan>Pack:</PackSpan>
                 <QuantitySpan>{packValue}</QuantitySpan>
             </QuantityContainer>
         </Container>
@@ -71,16 +74,53 @@ const SizeQuantities = ({ product }: SizeQuantitiesProps) => {
 };
 export default SizeQuantities;
 
+// styles
+const FullScreenWidth = Dimensions.get('window').width
+
 const Container = styled.View<{ display: 'flex' | 'none' }>`
     display: ${(props: any) => props.display};
+
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    position: absolute;
+    bottom: 0;
+    padding: 12px 12px 20px 12px;
+    width: ${ () => FullScreenWidth }px;
+
+    background-color: ${ () => Colors.blueGray };
 `;
 
 const QuantityContainer = styled.View`
-    flex-direction: row;
+    align-items: flex-end;
+    background-color: ${()=> Colors.blueGray};
 `;
 
 const SizeLetter = styled.Text`
+    background-color: ${()=> Colors.blueGray};
+    position: relative;
+    z-index: 2;
+    color: ${()=> Colors.white};
     font-weight: bold;
-`;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    border-radius: 900px;
+    margin-right: -10px;
+    margin-bottom: -10px;
 
-const QuantitySpan = styled.Text``;
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${()=> Colors.white};
+`;
+const PackSpan = styled.Text`
+    margin-top: -6px;
+    color: ${()=> Colors.white};
+    align-self: center;
+`
+const QuantitySpan = styled.Text`
+    color: ${()=> Colors.blueGray};
+    background-color: ${()=> Colors.white};
+    padding: 5px 15px;
+    border-radius: 5px;
+`;
